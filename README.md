@@ -1,4 +1,4 @@
    INTEGRANTES DEL EQUIPO:
-  - Cordova Paez Luisangel
-  - Mendiola Flores Gabriel Alejandro
-  - Diaz Sanchez Joshua
+  - Cordova Paez Luisangel                    217635743
+  - Mendiola Flores Gabriel Alejandro         221349615
+  - Diaz Sanchez Joshua                       
