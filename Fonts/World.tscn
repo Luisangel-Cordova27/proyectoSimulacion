@@ -1,0 +1,1380 @@
+[gd_scene load_steps=30 format=3 uid="uid://db2h3t17k37pe"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_1d73w"]
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_6wpp6"]
+[ext_resource type="Material" uid="uid://b4s0xnt1f6lia" path="res://Materials/Green.tres" id="1_o5nrg"]
+[ext_resource type="PackedScene" uid="uid://554siktjw3qa" path="res://Scenes/arbol.tscn" id="2_4elh4"]
+[ext_resource type="AudioStream" uid="uid://ivngu0otno0e" path="res://Assets/groovy-ambient-funk-201745.mp3" id="3_8fkcw"]
+[ext_resource type="PackedScene" uid="uid://drhq2oorpo5f2" path="res://Scenes/grifo.tscn" id="4_268x5"]
+[ext_resource type="PackedScene" uid="uid://bu7o57js25y8s" path="res://Scenes/edificio.tscn" id="5_1tflk"]
+[ext_resource type="PackedScene" uid="uid://8yooctglixq0" path="res://Scenes/bote.tscn" id="5_3nj26"]
+[ext_resource type="Script" path="res://Scripts/bolaPapel.gd" id="5_6jydw"]
+[ext_resource type="Script" path="res://Scripts/lata.gd" id="5_w1c40"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_la7pj"]
+[ext_resource type="ArrayMesh" path="res://Assets/papel_nuevo.res" id="6_n7qse"]
+[ext_resource type="Texture2D" uid="uid://btqntu4l746yu" path="res://botonSalto.png" id="7_0dhsr"]
+[ext_resource type="Texture2D" uid="uid://b85qte2fegk5p" path="res://Assets/Este viejo cachondo.jpg" id="9_8alfw"]
+[ext_resource type="Texture2D" uid="uid://byhrow1r3cpoi" path="res://Assets/thisman.org.jpg" id="10_3ohw2"]
+[ext_resource type="FontFile" uid="uid://dm023tq38l1v5" path="res://Fonts/Xolonium-Regular.ttf" id="10_g1gdg"]
+[ext_resource type="Script" path="res://Scripts/Contador.gd" id="13_5c6rb"]
+[ext_resource type="Texture2D" uid="uid://dmlwgaa5qymjd" path="res://Assets/re.png" id="14_fek3r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5lq0h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_f6bkd"]
+sky_material = SubResource("ProceduralSkyMaterial_5lq0h")
+
+[sub_resource type="Environment" id="Environment_g2h84"]
+background_mode = 2
+sky = SubResource("Sky_f6bkd")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajt3f"]
+albedo_color = Color(1, 0.215686, 0.192157, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bnoss"]
+material = SubResource("StandardMaterial3D_ajt3f")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s2213"]
+height = 0.7039
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_18u7c"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xc2g5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wydro"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8kg01"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_46p8x"]
+events = [SubResource("InputEventKey_8kg01")]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_6wpp6")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 5, 0, 0, 0)
+material_override = ExtResource("1_o5nrg")
+use_collision = true
+size = Vector3(52.2363, 0.002, 59.575)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_g2h84")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Obj" type="Node3D" parent="Map"]
+
+[node name="Arboles" type="Node3D" parent="Map/Obj"]
+
+[node name="Arbol" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96297, -0.131424, -3.95631)
+
+[node name="Arbol2" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8811, -0.131424, -3.95631)
+
+[node name="Arbol3" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8196, -0.131424, -3.95631)
+
+[node name="Arbol4" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5666, -0.131424, -3.95631)
+
+[node name="Arbol5" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.4273, -0.131424, -3.95631)
+
+[node name="Arbol6" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6971, -0.131424, -3.95631)
+
+[node name="Arbol7" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.7789, -0.131424, -3.95631)
+
+[node name="Arbol8" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8405, -0.131424, -3.95631)
+
+[node name="Arbol9" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0935, -0.131424, -3.95631)
+
+[node name="Arbol10" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23279, -0.131424, -3.95631)
+
+[node name="Arbol11" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96297, -0.131424, 3.53706)
+
+[node name="Arbol12" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8811, -0.131424, 3.53706)
+
+[node name="Arbol13" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8196, -0.131424, 3.53706)
+
+[node name="Arbol14" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5666, -0.131424, 3.53706)
+
+[node name="Arbol15" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.4273, -0.131424, 3.53706)
+
+[node name="Arbol16" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6971, -0.131424, 3.53706)
+
+[node name="Arbol17" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.7789, -0.131424, 3.53706)
+
+[node name="Arbol18" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8405, -0.131424, 3.53706)
+
+[node name="Arbol19" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0935, -0.131424, 3.53706)
+
+[node name="Arbol20" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23279, -0.131424, 3.53706)
+
+[node name="Arbol21" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, -8.18493)
+
+[node name="Arbol22" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, -18.8096)
+
+[node name="Arbol23" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, -29.0597)
+
+[node name="Arbol24" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, -39.3851)
+
+[node name="Arbol25" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, -49.1732)
+
+[node name="Arbol26" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, 49.1838)
+
+[node name="Arbol27" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, 38.5591)
+
+[node name="Arbol28" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, 28.3091)
+
+[node name="Arbol29" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, 17.9837)
+
+[node name="Arbol30" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63446, -0.131424, 8.1955)
+
+[node name="Arbol31" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, -8.18493)
+
+[node name="Arbol32" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, -18.8096)
+
+[node name="Arbol33" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, -29.0597)
+
+[node name="Arbol34" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, -39.3851)
+
+[node name="Arbol35" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, -49.1732)
+
+[node name="Arbol36" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, 49.1838)
+
+[node name="Arbol37" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, 38.5591)
+
+[node name="Arbol38" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, 28.3091)
+
+[node name="Arbol39" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, 17.9837)
+
+[node name="Arbol40" parent="Map/Obj/Arboles" instance=ExtResource("2_4elh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85173, -0.131424, 8.1955)
+
+[node name="Latas" type="Node3D" parent="Map/Obj"]
+
+[node name="Lata" type="Node3D" parent="Map/Obj/Latas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50779, 0, 9.47141)
+
+[node name="lata" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30832, 0, 0)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata2" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30832, 0, 4.24948)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata2"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata2"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata3" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2529, 0, 13.1049)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata3"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata3"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata4" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7305, 0, 22.5587)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata4"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata4"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata5" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -7.78947, 0, -17.193)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata5"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata5"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata6" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -7.78947, 0, -12.9435)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata6"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata6"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata7" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -15.734, 0, -4.08813)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata7"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata7"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata8" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -22.2117, 0, 5.36572)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata8"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata8"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata9" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2422, 0, 1.19283)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata9"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata9"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata10" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2422, 0, 5.44231)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata10"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata10"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata11" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1867, 0, 14.2977)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata11"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata11"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata12" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.6644, 0, 23.7516)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata12"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata12"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata13" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -3.19081, 0, -40.7112)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata13"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata13"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata14" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -3.19081, 0, -36.4617)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata14"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata14"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata15" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -11.1353, 0, -27.6063)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata15"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata15"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata16" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -17.613, 0, -18.1524)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata16"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata16"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata17" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.0579, 0, 0)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata17"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata17"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata18" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.0579, 0, 4.24948)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata18"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata18"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata19" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.1134, 0, 13.1049)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata19"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata19"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata20" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.6357, 0, 22.5587)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata20"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata20"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata21" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -21.3465, 0, 37.5186)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata21"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata21"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata22" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -21.3465, 0, 41.7681)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata22"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata22"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata23" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -29.291, 0, 50.6235)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata23"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata23"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -22.1224, 0.25, 11.5544)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata24" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -35.7686, 0, 60.0774)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata24"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -48.635, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata24"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -39.3839, 0.25, -0.00699806)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata25" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1241, 0, 1.19283)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata25"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata25"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata26" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1241, 0, 5.44231)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata26"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata26"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata27" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1795, 0, 14.2977)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata27"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata27"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata28" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7019, 0, 23.7516)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata28"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata28"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata29" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -16.7478, 0, 14.0005)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata29"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata29"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata30" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -16.7478, 0, 18.2499)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata30"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata30"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata31" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -24.6923, 0, 27.1053)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata31"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata31"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="lata32" type="Area3D" parent="Map/Obj/Latas/Lata"]
+transform = Transform3D(-0.240516, 0, -0.970645, 0, 1, 0, 0.970645, 0, -0.240516, -31.17, 0, 36.5592)
+script = ExtResource("5_w1c40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Latas/Lata/lata32"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Latas/Lata/lata32"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[node name="Bolitas Papel" type="Node3D" parent="Map/Obj"]
+
+[node name="Bolita" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 12.2799, 0.258374, -9.78228)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita2" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 17.7645, 0.258374, -9.78228)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita2"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita2"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita4" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 34.4548, 0.258374, -9.78228)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita4"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita4"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita5" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 34.4548, 0.258374, 20.3944)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita5"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita5"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita6" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 20.2484, 0.258374, 20.3944)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita6"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita6"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita7" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 20.2484, 0.258374, 6.22156)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita7"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita7"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita8" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 20.2484, 0.258374, -24.0679)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita8"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita8"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita9" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 29.7653, 0.258374, -24.0679)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita9"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita9"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita10" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 29.7653, 0.258374, -40.6096)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita10"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita10"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita11" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 17.8508, 0.258374, -40.6096)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita11"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita11"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita3" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -46.7932, 0.258374, -9.78228)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita3"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita3"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita21" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 16.6564, 0.258374, 19.7673)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita21"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita21"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita22" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 22.141, 0.258374, 19.7673)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita22"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita22"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita23" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 38.8313, 0.258374, 19.7673)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita23"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita23"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita24" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 38.8313, 0.258374, 49.944)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita24"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita24"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita25" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 24.6249, 0.258374, 49.944)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita25"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita25"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita26" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 24.6249, 0.258374, 35.7712)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita26"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita26"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita27" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 24.6249, 0.258374, 5.48169)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita27"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita27"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita28" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 34.1417, 0.258374, 5.48169)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita28"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita28"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita29" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 34.1417, 0.258374, -11.06)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita29"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita29"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita30" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 22.2273, 0.258374, -11.06)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita30"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita30"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita31" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -42.4168, 0.258374, 19.7673)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita31"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita31"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita12" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -41.3086, 0.258374, -9.78228)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita12"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita12"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita13" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -24.6183, 0.258374, -9.78228)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita13"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita13"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita14" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -24.6183, 0.258374, 20.3944)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita14"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita14"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita15" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -38.8247, 0.258374, 20.3944)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita15"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita15"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita16" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -38.8247, 0.258374, 6.22156)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita16"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita16"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita17" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -38.8247, 0.258374, -24.0679)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita17"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita17"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita18" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -29.3079, 0.258374, -24.0679)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita18"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita18"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita19" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -29.3079, 0.258374, -40.6096)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita19"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita19"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Bolita20" type="Area3D" parent="Map/Obj/Bolitas Papel"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -41.2223, 0.258374, -40.6096)
+script = ExtResource("5_6jydw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Obj/Bolitas Papel/Bolita20"]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = ExtResource("6_n7qse")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Obj/Bolitas Papel/Bolita20"]
+transform = Transform3D(3.75548, 0, 0, 0, 4.27586, 0, 0, 0, 3.61621, 0, 0, 0)
+shape = SubResource("SphereShape3D_18u7c")
+
+[node name="Grifos" type="Node3D" parent="Map/Obj"]
+
+[node name="Grifo" parent="Map/Obj/Grifos" instance=ExtResource("4_268x5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.64692, 0, -12.4737)
+
+[node name="Grifo2" parent="Map/Obj/Grifos" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6077, 0, 13.1019)
+
+[node name="Botes" type="Node3D" parent="Map/Obj"]
+
+[node name="Node3D" parent="Map/Obj/Botes" instance=ExtResource("5_3nj26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.21943, 0, 5.47531)
+
+[node name="Node3D2" parent="Map/Obj/Botes" instance=ExtResource("5_3nj26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.52622, 0, 5.47531)
+
+[node name="Node3D3" parent="Map/Obj/Botes" instance=ExtResource("5_3nj26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.21943, 0, -5.66865)
+
+[node name="Node3D4" parent="Map/Obj/Botes" instance=ExtResource("5_3nj26")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.52622, 0, -5.66865)
+
+[node name="Parkour" type="Node3D" parent="Map/Obj"]
+
+[node name="GrifoP" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.60216, 0.944435, -56.5234)
+
+[node name="GrifoP2" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.31621, 1.96668, -56.5234)
+
+[node name="GrifoP3" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 9.51252, 2.86452, -56.5234)
+
+[node name="GrifoP4" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 13.0933, 2.86452, -56.5234)
+
+[node name="GrifoP5" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 15.9724, 3.69059, -56.5234)
+
+[node name="GrifoP9" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 18.7537, 3.69059, -56.5234)
+
+[node name="GrifoP6" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 21.9645, 3.69059, -56.5234)
+
+[node name="GrifoP7" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 25.5875, 4.63194, -56.5234)
+
+[node name="GrifoP8" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 29.3385, 5.23196, -56.5234)
+
+[node name="GrifoP10" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 31.9719, 5.86021, -56.5234)
+
+[node name="GrifoP11" parent="Map/Obj/Parkour" instance=ExtResource("4_268x5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 35.0488, 6.88916, -56.5234)
+
+[node name="Sprite3D" type="Sprite3D" parent="Map/Obj/Parkour"]
+transform = Transform3D(-7, 1.05697e-06, -4.62017e-14, 0, -3.0598e-07, -7, -1.05697e-06, -7, 3.0598e-07, 0.129407, 10.4621, -102.1)
+flip_h = true
+texture = ExtResource("9_8alfw")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Map/Obj/Parkour"]
+transform = Transform3D(-3.49691e-09, 0, -0.08, 0, 0.08, 0, 0.08, 0, -3.49691e-09, 35.7854, 7.86908, -55.7068)
+texture = ExtResource("9_8alfw")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Map/Obj/Parkour"]
+transform = Transform3D(-3.49691e-09, 0, -0.08, 0, 0.08, 0, 0.08, 0, -3.49691e-09, 35.7854, 8.90852, -55.7068)
+texture = ExtResource("10_3ohw2")
+
+[node name="Edificios" type="Node3D" parent="Map"]
+
+[node name="Edificio" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -61.1151, -1, 0)
+
+[node name="Edificio2" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -61.1151, -1, -20.0477)
+
+[node name="Edificio3" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -61.1151, -1, -39.6554)
+
+[node name="Edificio4" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -61.1151, -1, -59.6073)
+
+[node name="Edificio5" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -61.1151, -1, 58.0271)
+
+[node name="Edificio6" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -61.1151, -1, 38.4194)
+
+[node name="Edificio7" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -61.1151, -1, 18.4675)
+
+[node name="Edificio8" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 61.115, -1, 0)
+
+[node name="Edificio9" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 61.115, -1, -20.0477)
+
+[node name="Edificio10" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 61.115, -1, -39.6554)
+
+[node name="Edificio11" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 61.115, -1, -59.6073)
+
+[node name="Edificio12" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 61.115, -1, 58.0271)
+
+[node name="Edificio13" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 61.115, -1, 38.4194)
+
+[node name="Edificio14" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 61.115, -1, 18.4675)
+
+[node name="Edificio15" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, -1, -61.5)
+
+[node name="Edificio16" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.796, -1, -61.5)
+
+[node name="Edificio17" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40.6911, -1, -61.5)
+
+[node name="Edificio18" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 59.1362, -1, -61.5)
+
+[node name="Edificio19" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -56.616, -1, -61.5)
+
+[node name="Edificio20" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -36.7208, -1, -61.5)
+
+[node name="Edificio21" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18.2757, -1, -61.5)
+
+[node name="Edificio22" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 61.5)
+
+[node name="Edificio23" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.796, -1, 61.5)
+
+[node name="Edificio24" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6911, -1, 61.5)
+
+[node name="Edificio25" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.1362, -1, 61.5)
+
+[node name="Edificio26" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.616, -1, 61.5)
+
+[node name="Edificio27" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7208, -1, 61.5)
+
+[node name="Edificio28" parent="Map/Edificios" instance=ExtResource("5_1tflk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2757, -1, 61.5)
+
+[node name="Caminos" type="Node3D" parent="Map"]
+
+[node name="Inicio" type="CSGBox3D" parent="Map/Caminos"]
+transform = Transform3D(13, 0, 0, 0, 0.2, 0, 0, 0, 13, 0, 0, 0)
+
+[node name="Corredor" type="CSGBox3D" parent="Map/Caminos"]
+transform = Transform3D(50, 0, 0, 0, 0.2, 0, 0, 0, 5, -31.5, 0, 0)
+
+[node name="Corredor2" type="CSGBox3D" parent="Map/Caminos"]
+transform = Transform3D(-2.18557e-06, 0, 5, 0, 0.2, 0, -50, 0, -2.18557e-07, 0, 0, 31.5)
+
+[node name="Corredor3" type="CSGBox3D" parent="Map/Caminos"]
+transform = Transform3D(-2.18557e-06, 0, 5, 0, 0.2, 0, -50, 0, -2.18557e-07, 0, 0, -31.5)
+
+[node name="Corredor4" type="CSGBox3D" parent="Map/Caminos"]
+transform = Transform3D(50, 0, 0, 0, 0.2, 0, 0, 0, 5, 31.5, 0, 0)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_1d73w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_xc2g5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wydro")
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67939, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Test" type="Node2D" parent="Control"]
+
+[node name="UI" type="CanvasLayer" parent="Control/Test"]
+
+[node name="Virtual joystick left" parent="Control/Test/UI" instance=ExtResource("6_la7pj")]
+offset_top = -298.0
+offset_right = 376.0
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
+
+[node name="Control" type="Control" parent="Control/Test/UI"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(4.92554, 5.05827)
+size_flags_horizontal = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control/Test/UI/Control"]
+position = Vector2(-44.0561, -43.2954)
+scale = Vector2(0.0228402, 0.0228586)
+texture_normal = ExtResource("7_0dhsr")
+action = "jump"
+
+[node name="Label" type="Label" parent="Control/Test/UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_g1gdg")
+theme_override_font_sizes/font_size = 65
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_5c6rb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 149.0
+offset_bottom = 93.0
+
+[node name="Pausa" type="TouchScreenButton" parent="Control/VBoxContainer"]
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("14_fek3r")
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_46p8x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8fkcw")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata" to="Map/Obj/Latas/Lata/lata" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata2" to="Map/Obj/Latas/Lata/lata2" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata2" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata3" to="Map/Obj/Latas/Lata/lata3" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata3" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata4" to="Map/Obj/Latas/Lata/lata4" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata4" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata5" to="Map/Obj/Latas/Lata/lata5" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata5" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata6" to="Map/Obj/Latas/Lata/lata6" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata6" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata7" to="Map/Obj/Latas/Lata/lata7" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata7" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata8" to="Map/Obj/Latas/Lata/lata8" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata8" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata9" to="Map/Obj/Latas/Lata/lata9" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata9" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata10" to="Map/Obj/Latas/Lata/lata10" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata10" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata11" to="Map/Obj/Latas/Lata/lata11" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata11" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata12" to="Map/Obj/Latas/Lata/lata12" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata12" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata13" to="Map/Obj/Latas/Lata/lata13" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata13" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata14" to="Map/Obj/Latas/Lata/lata14" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata14" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata15" to="Map/Obj/Latas/Lata/lata15" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata15" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata16" to="Map/Obj/Latas/Lata/lata16" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata16" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata17" to="Map/Obj/Latas/Lata/lata17" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata17" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata18" to="Map/Obj/Latas/Lata/lata18" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata18" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata19" to="Map/Obj/Latas/Lata/lata19" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata19" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata20" to="Map/Obj/Latas/Lata/lata20" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata20" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata21" to="Map/Obj/Latas/Lata/lata21" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata21" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata22" to="Map/Obj/Latas/Lata/lata22" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata22" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata23" to="Map/Obj/Latas/Lata/lata23" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata23" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata24" to="Map/Obj/Latas/Lata/lata24" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata24" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata25" to="Map/Obj/Latas/Lata/lata25" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata25" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata26" to="Map/Obj/Latas/Lata/lata26" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata26" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata27" to="Map/Obj/Latas/Lata/lata27" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata27" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata28" to="Map/Obj/Latas/Lata/lata28" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata28" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata29" to="Map/Obj/Latas/Lata/lata29" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata29" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata30" to="Map/Obj/Latas/Lata/lata30" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata30" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata31" to="Map/Obj/Latas/Lata/lata31" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata31" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Latas/Lata/lata32" to="Map/Obj/Latas/Lata/lata32" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Latas/Lata/lata32" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita" to="Map/Obj/Bolitas Papel/Bolita" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita2" to="Map/Obj/Bolitas Papel/Bolita2" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita2" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita4" to="Map/Obj/Bolitas Papel/Bolita4" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita4" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita5" to="Map/Obj/Bolitas Papel/Bolita5" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita5" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita6" to="Map/Obj/Bolitas Papel/Bolita6" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita6" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita7" to="Map/Obj/Bolitas Papel/Bolita7" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita7" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita8" to="Map/Obj/Bolitas Papel/Bolita8" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita8" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita9" to="Map/Obj/Bolitas Papel/Bolita9" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita9" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita10" to="Map/Obj/Bolitas Papel/Bolita10" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita10" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita11" to="Map/Obj/Bolitas Papel/Bolita11" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita11" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita3" to="Map/Obj/Bolitas Papel/Bolita3" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita3" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita21" to="Map/Obj/Bolitas Papel/Bolita21" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita21" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita22" to="Map/Obj/Bolitas Papel/Bolita22" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita22" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita23" to="Map/Obj/Bolitas Papel/Bolita23" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita23" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita24" to="Map/Obj/Bolitas Papel/Bolita24" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita24" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita25" to="Map/Obj/Bolitas Papel/Bolita25" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita25" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita26" to="Map/Obj/Bolitas Papel/Bolita26" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita26" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita27" to="Map/Obj/Bolitas Papel/Bolita27" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita27" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita28" to="Map/Obj/Bolitas Papel/Bolita28" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita28" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita29" to="Map/Obj/Bolitas Papel/Bolita29" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita29" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita30" to="Map/Obj/Bolitas Papel/Bolita30" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita30" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita31" to="Map/Obj/Bolitas Papel/Bolita31" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita31" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita12" to="Map/Obj/Bolitas Papel/Bolita12" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita12" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita13" to="Map/Obj/Bolitas Papel/Bolita13" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita13" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita14" to="Map/Obj/Bolitas Papel/Bolita14" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita14" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita15" to="Map/Obj/Bolitas Papel/Bolita15" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita15" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita16" to="Map/Obj/Bolitas Papel/Bolita16" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita16" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita17" to="Map/Obj/Bolitas Papel/Bolita17" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita17" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita18" to="Map/Obj/Bolitas Papel/Bolita18" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita18" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita19" to="Map/Obj/Bolitas Papel/Bolita19" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita19" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="body_entered" from="Map/Obj/Bolitas Papel/Bolita20" to="Map/Obj/Bolitas Papel/Bolita20" method="_on_body_entered"]
+[connection signal="collected" from="Map/Obj/Bolitas Papel/Bolita20" to="Control/Test/UI/Label" method="on_actualizar"]
+[connection signal="pressed" from="Control/VBoxContainer/Pausa" to="." method="_on_pausa_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://bom3ysh5pgvq"]
+
+[ext_resource type="FontFile" uid="uid://dm023tq38l1v5" path="res://Fonts/Xolonium-Regular.ttf" id="1_0a3nf"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_dkif3"]
+[ext_resource type="AudioStream" uid="uid://cn0dp6oigelgl" path="res://Assets/trap-future-bass-royalty-free-music-167020.mp3" id="3_yqieo"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6byvs"]
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_1psje"]
+events = [SubResource("InputEventKey_6byvs")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_asuhs"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_25s34"]
+events = [SubResource("InputEventKey_asuhs")]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fw3mr"]
+size = Vector2(90, 12)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ym6ci"]
+size = Vector2(350, 60)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dkif3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -844.5
+offset_top = 146.0
+offset_right = 844.5
+offset_bottom = 423.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_0a3nf")
+theme_override_font_sizes/font_size = 55
+text = "Prestador de servicio, necesitamos de tu ayuda para salvar las areas verdes de nuestro centro. !CONFIAMOS EN TI!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -65.0
+offset_right = 448.0
+offset_bottom = 65.0
+grow_vertical = 2
+scale = Vector2(0.0201138, 0.0922095)
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0a3nf")
+theme_override_font_sizes/font_size = 45
+shortcut = SubResource("Shortcut_1psje")
+
+[node name="Cerrar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0a3nf")
+theme_override_font_sizes/font_size = 45
+shortcut = SubResource("Shortcut_25s34")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -31.0
+offset_right = 228.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JugarT" type="TouchScreenButton" parent="VBoxContainer2"]
+position = Vector2(3.5, 4)
+scale = Vector2(5, 5)
+texture_normal = SubResource("PlaceholderTexture2D_fw3mr")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0a3nf")
+theme_override_font_sizes/font_size = 50
+text = "JUGAR (ENTER)"
+
+[node name="CerrarT" type="TouchScreenButton" parent="VBoxContainer2"]
+position = Vector2(4, 71)
+scale = Vector2(1, 0.925498)
+texture_normal = SubResource("PlaceholderTexture2D_ym6ci")
+metadata/_edit_group_ = true
+
+[node name="Label2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0a3nf")
+theme_override_font_sizes/font_size = 50
+text = "Cerrar ( ESC)"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yqieo")
+volume_db = -12.0
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Cerrar" to="." method="_on_cerrar_pressed"]
+[connection signal="pressed" from="VBoxContainer2/JugarT" to="." method="_on_jugar_t_pressed"]
+[connection signal="pressed" from="VBoxContainer2/CerrarT" to="." method="_on_cerrar_t_pressed"]

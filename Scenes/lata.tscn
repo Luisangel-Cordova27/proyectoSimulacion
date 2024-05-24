@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://jsui3tsxss0n"]
+
+[ext_resource type="Script" path="res://Scripts/lata.gd" id="1_ga2al"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajt3f"]
+albedo_color = Color(1, 0.215686, 0.192157, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bnoss"]
+material = SubResource("StandardMaterial3D_ajt3f")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s2213"]
+height = 0.7039
+
+[node name="Node3D" type="Node3D"]
+
+[node name="lata" type="Area3D" parent="."]
+script = ExtResource("1_ga2al")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lata"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.256915, 0)
+mesh = SubResource("CylinderMesh_bnoss")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lata"]
+transform = Transform3D(0.2, 0, 0, 0, 0.6, 0, 0, 0, 0.2, -0.003, 0.25, -0.007)
+shape = SubResource("CylinderShape3D_s2213")
+
+[connection signal="body_entered" from="lata" to="lata" method="_on_body_entered"]
